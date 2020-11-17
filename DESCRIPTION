@@ -1,6 +1,6 @@
 Package: ProxCox
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Estimates time-varying effects Cox model
+Version: 1.0
 Authors@R: 
     person(given = "Jacob",
            family = "Shkrob",

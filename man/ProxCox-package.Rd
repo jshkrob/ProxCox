@@ -4,7 +4,7 @@
 \name{ProxCox-package}
 \alias{ProxCox}
 \alias{ProxCox-package}
-\title{ProxCox: What the Package Does (One Line, Title Case)}
+\title{ProxCox: Estimates time-varying effects Cox model}
 \description{
 What the package does (one paragraph).
 }

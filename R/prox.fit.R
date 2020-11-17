@@ -119,7 +119,7 @@ prox.fit <- function (time, death, X, names=NULL, Ftime, knots, theta, iter.max,
             lik_n <- sum(log(hi)) + sum(X[eventtimes, ] * t(theta %*% t(Ftime))) # current likelihood)
             LHS <- - lik_n
             RHS <- (lik - PEN) + (t_s  * (t(grad) %*% G)) + ( (t_s / 2)*( norm(G, "2")^2) )
-            cat(LHS, ">", RHS, "\n")
+            #cat(LHS, ">", RHS, "\n")
             t_s <- delta * t_s
         }
         end.time <- Sys.time()

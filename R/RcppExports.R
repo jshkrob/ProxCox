@@ -12,10 +12,10 @@
 NULL
 
 sumevents_c <- function(i, X, Ftime, theta, n, p, eventtimes) {
-    .Call('_ProxCox_sumevents_c', PACKAGE = 'ProxCox', i, X, Ftime, theta, n, p, eventtimes)
+    .Call(`_ProxCox_sumevents_c`, i, X, Ftime, theta, n, p, eventtimes)
 }
 
 timesTwo <- function(x) {
-    .Call('_ProxCox_timesTwo', PACKAGE = 'ProxCox', x)
+    .Call(`_ProxCox_timesTwo`, x)
 }
 
