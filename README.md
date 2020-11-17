@@ -11,3 +11,11 @@ listg <- ProxCox::prep_data(rfst, GBSG$cens, GBSG[, c("grade", "age", "prm", "po
 prox.fit.GBSG2 <- ProxCox::prox.fit(listg$time, listg$cens, listg$data, names = colnames(listg$data), listg$Fts, listg$knots, lambda1 = 3, lambda2 = 5, ttime = 1, iter.max = 1000, delta = 0.05, acceleration = FALSE, verbal = TRUE)
 ProxCox::plot.prx(prox.fit.GBSG2, variable = 1, b.theta = FALSE)
 ```
+To install the package, run the following:
+
+```R
+library(devtools)
+devtools:install_github("jshkrob/ProxCox")
+```
+
+Please email me with any errors/bugs
