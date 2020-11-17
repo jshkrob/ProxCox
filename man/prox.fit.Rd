@@ -22,39 +22,39 @@ prox.fit(
 )
 }
 \arguments{
-\item{time}{PARAM_DESCRIPTION}
+\item{time}{time-to-event data from prep_data}
 
-\item{death}{PARAM_DESCRIPTION}
+\item{death}{survival information; binary vector from prep_data}
 
-\item{X}{PARAM_DESCRIPTION}
+\item{X}{covariates of interest from prep_data}
 
-\item{names}{PARAM_DESCRIPTION, Default: NULL}
+\item{names}{column names of the covariates X, Default: NULL}
 
-\item{Ftime}{PARAM_DESCRIPTION}
+\item{Ftime}{B-spline basis functions evaluated at each survival time point from prep_data}
 
-\item{knots}{PARAM_DESCRIPTION}
+\item{knots}{knots of B-spline basis from prep_data}
 
-\item{theta}{PARAM_DESCRIPTION}
+\item{theta}{optional initialization of theta}
 
-\item{iter.max}{PARAM_DESCRIPTION}
+\item{iter.max}{iteration number for proximal gradient method}
 
-\item{lambda1}{PARAM_DESCRIPTION}
+\item{lambda1}{regularization parameter for sparsity}
 
-\item{lambda2}{PARAM_DESCRIPTION}
+\item{lambda2}{regularization parameter for smoothness penalty}
 
-\item{ttime}{PARAM_DESCRIPTION}
+\item{ttime}{initial learning rate}
 
-\item{acceleration}{PARAM_DESCRIPTION, Default: FALSE}
+\item{acceleration}{use Nesterov acceleration, Default: FALSE}
 
-\item{delta}{PARAM_DESCRIPTION, Default: 0.5}
+\item{delta}{backtracking step size, Default: 0.5}
 
-\item{verbal}{PARAM_DESCRIPTION, Default: FALSE}
+\item{verbal}{output of information at each iteration, Default: FALSE}
 }
 \value{
 OUTPUT_DESCRIPTION
 }
 \description{
-FUNCTION_DESCRIPTION
+Outputs B-spline basis coefficients for each covariate of interest using Proximal Gradient Descent method on penalized Cox Partial Likelihood function
 }
 \details{
 DETAILS

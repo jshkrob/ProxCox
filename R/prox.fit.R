@@ -14,21 +14,21 @@
 ###########################################################################################
 
 #' @title prox.fit
-#' @description FUNCTION_DESCRIPTION
-#' @param time PARAM_DESCRIPTION
-#' @param death PARAM_DESCRIPTION
-#' @param X PARAM_DESCRIPTION
-#' @param names PARAM_DESCRIPTION, Default: NULL
-#' @param Ftime PARAM_DESCRIPTION
-#' @param knots PARAM_DESCRIPTION
-#' @param theta PARAM_DESCRIPTION
-#' @param iter.max PARAM_DESCRIPTION
-#' @param lambda1 PARAM_DESCRIPTION
-#' @param lambda2 PARAM_DESCRIPTION
-#' @param ttime PARAM_DESCRIPTION
-#' @param acceleration PARAM_DESCRIPTION, Default: FALSE
-#' @param delta PARAM_DESCRIPTION, Default: 0.5
-#' @param verbal PARAM_DESCRIPTION, Default: FALSE
+#' @description Outputs B-spline basis coefficients for each covariate of interest using Proximal Gradient Descent method on penalized Cox Partial Likelihood function
+#' @param time time-to-event data from prep_data
+#' @param death survival information; binary vector from prep_data
+#' @param X covariates of interest from prep_data
+#' @param names column names of the covariates X, Default: NULL
+#' @param Ftime B-spline basis functions evaluated at each survival time point from prep_data
+#' @param knots knots of B-spline basis from prep_data
+#' @param theta optional initialization of theta
+#' @param iter.max iteration number for proximal gradient method
+#' @param lambda1 regularization parameter for sparsity
+#' @param lambda2 regularization parameter for smoothness penalty
+#' @param ttime initial learning rate
+#' @param acceleration use Nesterov acceleration, Default: FALSE
+#' @param delta backtracking step size, Default: 0.5
+#' @param verbal output of information at each iteration, Default: FALSE
 #' @return OUTPUT_DESCRIPTION
 #' @details DETAILS
 #' @examples
