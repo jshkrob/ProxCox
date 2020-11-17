@@ -2,7 +2,9 @@
 
 export(penal)
 export(plot.prx)
+export(prep_data)
 export(prox.fit)
 export(reg.fit)
 importFrom(Rcpp,sourceCpp)
+importFrom(mgcv,smooth.construct.cr.smooth.spec)
 useDynLib(ProxCox, .registration = TRUE)

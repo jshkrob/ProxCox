@@ -77,7 +77,7 @@ prox.fit <- function (time, death, X, names=NULL, Ftime, knots, theta, iter.max,
     tt <- numeric(); tt[1] <- 1; for(i in 2:(iter.max+1)) {tt[i] <- (1+sqrt(1 + (4 * tt[i-1]^2)))/2}
 
 
-    while (epsilon > 1e-06 && iter < iter.max) {
+    while (epsilon > 1e-05 && iter < iter.max) {
         th <- theta
         LHS <- 1; RHS <- 0;
         iter <- iter + 1
