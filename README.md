@@ -15,7 +15,7 @@ To install the package, run the following:
 
 ```R
 library(devtools)
-devtools:install_github("jshkrob/ProxCox")
+devtools::install_github("jshkrob/ProxCox")
 ```
 
 Please email me with any errors/bugs
