@@ -1,24 +1,25 @@
 
-#' @title FUNCTION_TITLE
-#' @description FUNCTION_DESCRIPTION
-#' @param time PARAM_DESCRIPTION
-#' @param cens PARAM_DESCRIPTION
-#' @param X PARAM_DESCRIPTION
-#' @param num_knots PARAM_DESCRIPTION
-#' @param center PARAM_DESCRIPTION, Default: FALSE
-#' @return OUTPUT_DESCRIPTION
+#' @title prep_data
+#' @description outputs list of processes survival data necissary for prox.fit and reg.fit
+#' @param time survival time (either inorder or unordered)
+#' @param cens censored indicator (binary vector)
+#' @param X covariates of interest
+#' @param num_knots number of knots to use in spline
+#' @param center centering, Default: FALSE
+#' @return list containg processed data (time, cens, X) and basis functions evaluated at each time point, knots used
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
 #' if(interactive()){
 #'  #EXAMPLE1
 #'  }
 #' }
-#' @seealso 
+#' @seealso
 #'  \code{\link[mgcv]{smooth.construct.cr.smooth.spec}}
 #' @rdname prep_data
-#' @export 
+#' @export
 #' @importFrom mgcv smooth.construct.cr.smooth.spec
+#' @importFrom mgcv s
 prep_data <- function(time, cens, X, num_knots, center = FALSE) {
     cens = cens[order(time)]
     time <- time[order(time)]
@@ -33,7 +34,7 @@ prep_data <- function(time, cens, X, num_knots, center = FALSE) {
     }
     colnames(X) <- c(names.X)
     knots <- quantile(time, seq(0.0, 1.0, 1/(num_knots-1)))
-    objc <- s(time, bs = "cr", k = num_knots)
+    objc <- mgcv::s(time, bs = "cr", k = num_knots)
     obj <- mgcv::smooth.construct.cr.smooth.spec(objc, list(time = time), knots = list( time = knots))
     li <- list(time = time, cens = cens, data = X, Fts = obj$X, knots = knots)
     return(li)

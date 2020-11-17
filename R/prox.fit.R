@@ -13,7 +13,7 @@
 # delta - backtracking stepping size for proximal gd step
 ###########################################################################################
 
-#' @title FUNCTION_TITLE
+#' @title prox.fit
 #' @description FUNCTION_DESCRIPTION
 #' @param time PARAM_DESCRIPTION
 #' @param death PARAM_DESCRIPTION
@@ -44,7 +44,7 @@ prox.fit <- function (time, death, X, names=NULL, Ftime, knots, theta, iter.max,
     survt <- "Surv(time, death)"
     ff <- as.formula(paste(survt, paste(names, collapse=" + "), sep=" ~ "))
 
-    epsilon <- 5; iter <- 0; t <- ttime; BTHETA <- NULL; BLIKL <- Inf; BPEN <- NULL; at.iter <- 0;
+    epsilon <- 5; iter <- 0; t <- ttime; BTHETA <- NULL; BLIKL <- Inf; BPEN <- NULL; at.iter <- 0; ddel <- delta
     likelihood_iter <- rep(0, iter.max);
     unpenlikelihood_iter <- rep(0, iter.max)
     epsilon_iter <- rep(0, iter.max);
@@ -81,8 +81,9 @@ prox.fit <- function (time, death, X, names=NULL, Ftime, knots, theta, iter.max,
         th <- theta
         LHS <- 1; RHS <- 0;
         iter <- iter + 1
+        if (iter < 100) {delta <- 0.05} # warm start
+        else {delta <- ddel}
         t_s <- t
-
 
         if (iter == 1) {
             # current theta(s-1): gradient calculations on theta(s-1)
@@ -106,7 +107,7 @@ prox.fit <- function (time, death, X, names=NULL, Ftime, knots, theta, iter.max,
 
         #grad <- matrix(t(scores), ncol = 1) # gradient w.r.t 11, 12, ..., 1q, 21, 22, ..., 2q, ...., p*q
         start.time <- Sys.time(); iter.back <- 0;
-        while (round(LHS, 6) > round(RHS, 6)) {
+        while (LHS > RHS) {
             iter.back <- iter.back + 1;
             #thetanew <- matrix(matrix(th, ncol = 1) + (t_s * grad), ncol = q)
             prx <- prox((matrix(matrix(th, ncol = 1) + (t_s * grad), ncol = q)), penalty, t_s, lambda1);

@@ -2,26 +2,26 @@
 % Please edit documentation in R/prep_data.R
 \name{prep_data}
 \alias{prep_data}
-\title{FUNCTION_TITLE}
+\title{prep_data}
 \usage{
 prep_data(time, cens, X, num_knots, center = FALSE)
 }
 \arguments{
-\item{time}{PARAM_DESCRIPTION}
+\item{time}{survival time (either inorder or unordered)}
 
-\item{cens}{PARAM_DESCRIPTION}
+\item{cens}{censored indicator (binary vector)}
 
-\item{X}{PARAM_DESCRIPTION}
+\item{X}{covariates of interest}
 
-\item{num_knots}{PARAM_DESCRIPTION}
+\item{num_knots}{number of knots to use in spline}
 
-\item{center}{PARAM_DESCRIPTION, Default: FALSE}
+\item{center}{centering, Default: FALSE}
 }
 \value{
-OUTPUT_DESCRIPTION
+list containg processed data (time, cens, X) and basis functions evaluated at each time point, knots used
 }
 \description{
-FUNCTION_DESCRIPTION
+outputs list of processes survival data necissary for prox.fit and reg.fit
 }
 \details{
 DETAILS

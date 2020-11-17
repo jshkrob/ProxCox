@@ -2,7 +2,7 @@
 % Please edit documentation in R/prox.fit.R
 \name{prox.fit}
 \alias{prox.fit}
-\title{FUNCTION_TITLE}
+\title{prox.fit}
 \usage{
 prox.fit(
   time,
